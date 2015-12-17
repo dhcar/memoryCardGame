@@ -1,9 +1,14 @@
 .game-board{
 	display: flex;
 	flex-wrap: wrap;
+	justify-content: space-around;
 	background-color: rgb(235,255,255);
+	max-height: 100vh;
 	div{
 		text-align: center;
+		:hover{
+			cursor: pointer !important;
+		}
 	}
 	.no-card{
 		border: none;
@@ -22,8 +27,10 @@
 	height: 70px;
 	border: 1px solid black;
 	background-color: gray;
-	:hover{
-		cursor: pointer;
+	.card-face{
+		// padding-top: 20px;
+		height: 100%;
+		width: 100%;
 	}
 }
 .game-card.face-up{
@@ -34,7 +41,7 @@
 	0% { 
 		transform: rotateY(0deg);
 	}
-	50%{
+	90%{
 		color: rgba(0,0,0,0);
 	}
 	100% {

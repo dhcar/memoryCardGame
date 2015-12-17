@@ -1,9 +1,13 @@
 .game-board {
   display: flex;
   flex-wrap: wrap;
-  background-color: #ebffff; }
+  justify-content: space-around;
+  background-color: #ebffff;
+  max-height: 100vh; }
   .game-board div {
     text-align: center; }
+    .game-board div :hover {
+      cursor: pointer !important; }
   .game-board .no-card {
     border: none;
     background-color: transparent; }
@@ -18,8 +22,9 @@
   height: 70px;
   border: 1px solid black;
   background-color: gray; }
-  .game-card :hover {
-    cursor: pointer; }
+  .game-card .card-face {
+    height: 100%;
+    width: 100%; }
 
 .game-card.face-up {
   background-color: white; }
@@ -27,7 +32,7 @@
 @keyframes flip {
   0% {
     transform: rotateY(0deg); }
-  50% {
+  90% {
     color: transparent; }
   100% {
     color: black;

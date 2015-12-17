@@ -1,40 +1,53 @@
 <ion-content>
-<br>
-<br>
+<button ng-click="restart()">Restart</button>
+<button ng-click="playComputer()">Play Computer</button>
+	
+<h3 ng-show="!playingComputer">Solo</h3>
+<h3 ng-show="playingComputer">You vs Computer</h3>
+
 <div class="row">	
 	<div class="game-board col col-75">
 
-	    <div ng-repeat="card in cards.deck">
+	    <div ng-repeat="card in cards.deck" class="card-container">
 	    	<div
-	    		class="game-card"
-	    		ng-click="selectCard( card, $event )" ng-hide="card.removed" ng-class="{'face-up': card.faceUp}">
-	    		<div ng-show="card.faceUp">    			
-		    		{{card.number}} - {{card.suit}}
+	    	class="game-card"
+	    	ng-click="selectCard( $index, false, $event )"
+	    	ng-hide="card.removed"
+	    	ng-class="{'face-up': card.faceUp}">
+
+	    		<div ng-if="card.faceUp" class="card-face">    			
+		    		{{card.number | cards}} - {{card.suit}}
 	     		</div>
-	    		<div ng-hide="card.faceUp">
-	    			<!-- {{$index}} -->
+	    		<div ng-if="!card.faceUp">
+	    		.
 	    		</div>
+
 	    	</div>
 	    	<div ng-show="card.removed" class="no-card game-card"></div>
 	    </div>
 		
 	</div>
 	<div class="col col-75 matched-cards">
-		<h3>Matches: {{cardsMatched.length}}</h3>
-		<h4>Cards Matched: {{cardsMatched.length*2}}</h4>
+		<h3>Your Matches: {{cardsMatched.length}}</h3>
 		<div ng-repeat="cards in cardsMatched" class="row">
 			<div ng-repeat="card in cards">
 				<div class="game-card face-up">
 					{{card.number}} - {{card.suit}}
-					<!-- {{card.number}} - {{card.suit}} -->
-				</div>				
+				</div>
 			</div>
 		</div>
+		<br>
+		<h3>Computer Matches: {{computerCardsMatched.length}}</h3>
+		<div ng-repeat="cards in computerCardsMatched" class="row">
+			<div ng-repeat="card in cards">
+				<div class="game-card face-up">
+					{{card.number}} - {{card.suit}}
+				</div>
+			</div>
+		</div>
+	
+
 	</div>
 </div>
-
-<button ng-click="restart()">Restart</button>
-<button ng-click="playComputer()">Play Computer</button>
-
 
 </ion-content>

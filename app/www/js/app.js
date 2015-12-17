@@ -13,6 +13,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
   });
 })
 
+.filter('cards',function(){
+  return function(input){
+    if(input == 1) return 'A';
+    if(input == 11) return 'J';
+    if(input == 12) return 'Q';
+    if(input == 13) return 'K';
+    return input;
+  }
+})
+
 .config(function($stateProvider, $urlRouterProvider) {
 
   // Ionic uses AngularUI Router which uses the concept of states
