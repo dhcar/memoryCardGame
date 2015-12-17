@@ -1,0 +1,40 @@
+<ion-content>
+<br>
+<br>
+<div class="row">	
+	<div class="game-board col col-75">
+
+	    <div ng-repeat="card in cards.deck">
+	    	<div
+	    		class="game-card"
+	    		ng-click="selectCard( card, $event )" ng-hide="card.removed" ng-class="{'face-up': card.faceUp}">
+	    		<div ng-show="card.faceUp">    			
+		    		{{card.number}} - {{card.suit}}
+	     		</div>
+	    		<div ng-hide="card.faceUp">
+	    			<!-- {{$index}} -->
+	    		</div>
+	    	</div>
+	    	<div ng-show="card.removed" class="no-card game-card"></div>
+	    </div>
+		
+	</div>
+	<div class="col col-75 matched-cards">
+		<h3>Matches: {{cardsMatched.length}}</h3>
+		<h4>Cards Matched: {{cardsMatched.length*2}}</h4>
+		<div ng-repeat="cards in cardsMatched" class="row">
+			<div ng-repeat="card in cards">
+				<div class="game-card face-up">
+					{{card.number}} - {{card.suit}}
+					<!-- {{card.number}} - {{card.suit}} -->
+				</div>				
+			</div>
+		</div>
+	</div>
+</div>
+
+<button ng-click="restart()">Restart</button>
+<button ng-click="playComputer()">Play Computer</button>
+
+
+</ion-content>
